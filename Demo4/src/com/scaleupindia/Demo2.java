@@ -1,11 +1,10 @@
 package com.scaleupindia;
 
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Optional;
 
 import com.scaleupindia.entity.Employee;
 import com.scaleupindia.utility.GeneratorUtil;
-import com.scaleupindia.utility.LogUtil;
 
 /**
  * @author abhishekvermaa10
@@ -14,16 +13,18 @@ import com.scaleupindia.utility.LogUtil;
 public class Demo2 {
 	public static void main(String[] args) {
 		List<Employee> employeeList = GeneratorUtil.populateEmployees();
-		Stream<Employee> stream = employeeList.parallelStream();
-		long start = System.currentTimeMillis();
-		Stream<Employee> filteredStream = stream.peek(employee -> LogUtil.logWithoutSleep("Pre Filter  : " + employee))
-				.filter(employee -> {
-					LogUtil.logWithoutSleep("Filtering   : " + employee);
-					return employee.getMarks() >= 60;
-				}).peek(employee -> LogUtil.logWithoutSleep("Post Filter : " + employee));
-		
-		LogUtil.logWithoutSleep("---PARALLEL STREAM---");
-		LogUtil.logWithoutSleep("Count : " + filteredStream.count());
-		System.out.println(System.currentTimeMillis() - start + " milliseconds without sleep");
+		System.out.println("---FIND FIRST---");
+		// Create a stream from given list
+		// Get the first employee
+		// Print the employee
+		Optional<Employee> optional1 = employeeList.stream().findFirst();
+		System.out.println(optional1);
+
+		System.out.println("---FIND ANY---");
+		// Create a stream from given list
+		// Get any random employee
+		// Print the employee
+		Optional<Employee> optional2 = employeeList.stream().findAny();
+		System.out.println(optional2);
 	}
 }

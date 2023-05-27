@@ -10,14 +10,18 @@ import com.scaleupindia.entity.Employee;
  *
  */
 public class GeneratorUtil {
+	private GeneratorUtil() {
+
+	}
+
 	public static List<Employee> populateEmployees() {
 		List<Employee> employeeList = new ArrayList<>();
-		employeeList.add(new Employee(101, "Abhishek", 60));
+		employeeList.add(new Employee(101, "Abhishek", 10));
 		employeeList.add(new Employee(177, "Sneh", 55));
-		employeeList.add(new Employee(129, "John", 20));
-		employeeList.add(new Employee(101, "Abhishek", 50));
+		employeeList.add(new Employee(129, "John", 60));
+		employeeList.add(new Employee(101, "Abhishek", 60));
 		employeeList.add(new Employee(153, "Robert", 44));
-		employeeList.add(new Employee(102, "Elisa", 90));
+		employeeList.add(new Employee(102, "Yuvraj", 90));
 		return employeeList;
 	}
 }

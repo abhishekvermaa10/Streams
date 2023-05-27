@@ -29,10 +29,15 @@ public class Employee implements Comparable<Employee> {
 	public int getMarks() {
 		return marks;
 	}
+	
+	@Override
+	public int compareTo(Employee o) {
+		return this.getId() - o.getId();
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -44,12 +49,7 @@ public class Employee implements Comparable<Employee> {
 		if (getClass() != obj.getClass())
 			return false;
 		Employee other = (Employee) obj;
-		return id == other.id && Objects.equals(name, other.name);
-	}
-
-	@Override
-	public int compareTo(Employee o) {
-		return this.getId() - o.getId();
+		return id == other.id;
 	}
 
 	@Override

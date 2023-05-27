@@ -1,11 +1,10 @@
 package com.scaleupindia;
 
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Optional;
 
 import com.scaleupindia.entity.Employee;
 import com.scaleupindia.utility.GeneratorUtil;
-import com.scaleupindia.utility.LogUtil;
 
 /**
  * @author abhishekvermaa10
@@ -14,16 +13,22 @@ import com.scaleupindia.utility.LogUtil;
 public class Demo3 {
 	public static void main(String[] args) {
 		List<Employee> employeeList = GeneratorUtil.populateEmployees();
-		Stream<Employee> stream = employeeList.stream();
-		long start = System.currentTimeMillis();
-		Stream<Employee> filteredStream = stream.peek(employee -> LogUtil.logWithSleep("Pre Filter  : " + employee))
-				.filter(employee -> {
-					LogUtil.logWithSleep("Filtering   : " + employee);
-					return employee.getMarks() >= 60;
-				}).peek(employee -> LogUtil.logWithSleep("Post Filter : " + employee));
+		System.out.println("---REDUCE---");
+		// Create a stream from given list
+		// Get the marks of employees
+		// Add all the marks
+		// Print the sum of marks
+		Optional<Integer> optional1 = employeeList.stream().map(employee -> employee.getMarks())
+				.reduce((marks1, marks2) -> marks1 + marks2);
+		System.out.println(optional1);
 
-		LogUtil.logWithSleep("---STREAM---");
-		LogUtil.logWithSleep("Count : " + filteredStream.count());
-		System.out.println(System.currentTimeMillis() - start + " milliseconds without sleep");
+		System.out.println("---REDUCE WITH SEED---");
+		// Create a stream from given list
+		// Get the marks of employees
+		// Add all the marks to 1000
+		// Print the sum of marks
+		Integer optional2 = employeeList.stream().map(employee -> employee.getMarks())
+				.reduce(1000, (marks1, marks2) -> marks1 + marks2);
+		System.out.println(optional2);
 	}
 }

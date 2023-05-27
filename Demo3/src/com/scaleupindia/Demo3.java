@@ -1,8 +1,6 @@
 package com.scaleupindia;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
 
 import com.scaleupindia.entity.Employee;
 import com.scaleupindia.utility.GeneratorUtil;
@@ -14,14 +12,25 @@ import com.scaleupindia.utility.GeneratorUtil;
 public class Demo3 {
 	public static void main(String[] args) {
 		List<Employee> employeeList = GeneratorUtil.populateEmployees();
-		System.out.println("---MIN---");
-		Stream<Employee> stream = employeeList.stream();
-		Optional<Employee> result = stream.min((employee1, employee2) -> employee1.getMarks() - employee2.getMarks());
-		result.ifPresent(System.out::println);
+		System.out.println("---ALL MATCH---");
+		//Create a stream from given list
+		//Print true if all employees have marks more than 60, else false
+		//Print the number of employees
+		boolean result = employeeList.stream().allMatch(employee -> employee.getMarks() > 60);
+		System.out.println(result);
 
-		System.out.println("---MAX---");
-		Stream<Employee> stream2 = employeeList.stream();
-		Optional<Employee> result2 = stream2.max((employee1, employee2) -> employee1.getMarks() - employee2.getMarks());
-		result2.ifPresent(System.out::println);
+		System.out.println("---ANY MATCH---");
+		//Create a stream from given list
+		//Print true if at least 1 employee have marks more than 60, else false
+		//Print the number of employees
+		boolean result2 = employeeList.stream().anyMatch(employee -> employee.getMarks() > 60);
+		System.out.println(result2);
+
+		System.out.println("---NONE MATCH---");
+		//Create a stream from given list
+		//Print true if no employee have marks more than 60, else false
+		//Print the number of employees
+		boolean result3 = employeeList.stream().noneMatch(employee -> employee.getMarks() > 60);
+		System.out.println(result3);
 	}
 }
