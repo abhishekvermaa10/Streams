@@ -1,8 +1,0 @@
-Demo0 - List, Lambda, Method Reference, Stream
-Demo1 - Stream generation
-Demo2 - Iterate, Filter, Distinct, Skip, Limit, Sort, dropWhile, takeWhile, Map, Flat Map
-Demo3 - Count, Peek, All Match, Any Match, None Match
-Demo4 - Minimum, Maximum, Find First, Find Any, Reduce
-Demo5 - Collect, Group By, Partition By
-Demo6 - Prove that Streams are Lazy
-Demo7 - Stream having Log Without Sleep, Parallel Stream having Log Without Sleep, Stream having Log With Sleep, Parallel Stream having Log With Sleep
